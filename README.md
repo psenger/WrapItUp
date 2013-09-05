@@ -37,7 +37,7 @@ And this is what the HTML would look like before the wrapItUp.
 
 
 ```
-$(‘.cssanimations #pop-out’).wrapItUp(‘pop);
+$(‘.cssanimations #pop-out’).wrapItUp('pop');
 ```
 
 This is what it would look like after wrapItUp
@@ -52,3 +52,28 @@ P<span style="color:blue">&lt;/<span><span style="color:green">div</span><span s
 <br/>
 &lt;/body&gt;
 
+
+## Parameters ##
+
+wrapItUp()
+  - wraps each letter with a div
+
+wrapItUp(String)
+  - wraps each letter with a div and each div has the class specified in the string
+
+wrapItUp(String... )
+  - wraps each letter with a div and each div has the classes specified in the var args strings
+
+wrapItUp(Object)
+  - wraps each what ever is specificed in the object.
+  - Object :
+    - tag - String - the tag, default is div
+    - className - String[] - css classes
+    - tagDecorator - function( i, v ) - the callback function that creates the attributes of the tag
+    - innerDecorator - function ( i, v ) - the callback function that decorators each character.
+
+  
+## Methods ##
+
+destroy()
+	- unwraps the content, restoring it back to its original state.
