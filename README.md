@@ -1,9 +1,16 @@
-WrapItUp
+WrapItUp 
 ==================
+Version 
+1.0.0
 
 [![Build Status](https://travis-ci.org/psenger/WrapItUp.png?branch=master)](https://travis-ci.org/psenger/WrapItUp)
 
-WrapItUp is a Jquery plugin designed to wrap each letter ( the result of inner text ) with divs or any other tag with specified attributes.
+Tested with jQuery: '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4'
+
+> WrapItUp is a Jquery plugin designed to wrap each letter ( the result of inner text ) with divs or any other tag with specified attributes.
+
+Sample
+-----------
 
 Given some html like this..<br/>
 &lt;div id='target'&gt;Lorem ipsum&lt;/div&gt;
@@ -16,16 +23,13 @@ $('#target').wrapItUp('foo', 'goo');
 will produce this...<br/>
 &lt;div id='target'&gt;&lt;div class='foo goo'&gt;L&lt;/div&gt;&lt;div class='foo goo'&gt;o&lt;/div&gt;&lt;div class='foo goo'&gt;r&lt;/div&gt;&lt;div class='foo goo'&gt;e&lt;/div&gt;&lt;div class='foo goo'&gt;m&lt;/div&gt;&lt;div class='foo goo'&gt;&nbsp;&lt;/div&gt;&lt;div class='foo goo'&gt;i&lt;/div&gt;&lt;div class='foo goo'&gt;p&lt;/div&gt;&lt;div class='foo goo'&gt;s&lt;/div&gt;&lt;div class='foo goo'&gt;u&lt;/div&gt;&lt;div class='foo goo'&gt;m&lt;/div&gt;&lt;/div&gt;
 
-You might be asking why would you want to do this?! 
+Why?!
+-----------
 
-I simply needed to keep my content SEO friendly and easy to change ( not cluttered with tags ) while using css3 animation on a String of text. Web crawlers like Google, don’t run JavaScript and scan for consecutive text in HTML. Adhering to DRY, I decided to create a plugin and stop repeating myself.
+> You might be asking why would you want to do this?! I simply needed to keep my content SEO friendly and easy to change ( not cluttered with tags ) while using css3 animation on a String of text. Web crawlers like Google, don’t run JavaScript and rank pages based on a scan of consecutive text in HTML. Adhering to DRY, I decided to create a plugin and stop repeating myself. If you use modernizr (http://modernizr.com/) to identify the capabilities of the client you can use it as part of the jQuery selector.  For example, you might want to know if the Browser supports CSS3, you can incorporate it in the selector after Modernizr runs. In this example the class cssanimations is added by modernizr to the body tag. We can take advantage by using it in the jQuery selector. 
 
-If you use modernizr (http://modernizr.com/) to identify the capabilities of the client you can use it as part of the jQuery selector.  For example, you might want to know if the Browser supports CSS3, you can incorporate it in the selector after Modernizr runs.
 
-In this example the class cssanimations is added by modernizr to the body tag. We can take advantage by using it in the jQuery selector. 
-
-And this is what the HTML would look like before the wrapItUp.
-
+This is what the HTML would look like before the wrapItUp.
 
 &lt;body class=’cssanimations’ &gt;
 ....
@@ -35,6 +39,7 @@ And this is what the HTML would look like before the wrapItUp.
 ....
 &lt;/body&gt;
 
+Mixing in the modernizr introduced css class in the body and the tag selector, I call wrap it up like this.
 
 ```
 $(‘.cssanimations #pop-out’).wrapItUp('pop');
