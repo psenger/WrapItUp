@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Wrapitup by psenger</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Wrapitup : A jQuery plugin designed to wrap each letter and word ( the result of inner text and regular expression word boundaries ) with divs or any other tag and specified attributes." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Wrapitup</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Wrapitup</h1>
-          <h2>A jQuery plugin designed to wrap each letter and word ( the result of inner text and regular expression word boundaries ) with divs or any other tag and specified attributes.</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/psenger/WrapItUp">View on GitHub</a>
+
+          <h1 id="project_title">Wrapitup</h1>
+          <h2 id="project_tagline">A jQuery plugin designed to wrap each letter and word ( the result of inner text and regular expression word boundaries ) with divs or any other tag and specified attributes.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/psenger/WrapItUp/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/psenger/WrapItUp/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
+    </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/psenger/WrapItUp/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/psenger/WrapItUp/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/psenger/WrapItUp" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
 <a name="wrapitup-" class="anchor" href="#wrapitup-"><span class="octicon octicon-link"></span></a>WrapItUp </h1>
 
 <p>Version 
@@ -42,31 +42,47 @@
 <p>Tested with jQuery: '1.10.2', '1.9.1', '1.8.3', '1.7.2', '1.6.4', '1.5.2', '1.4.4'</p>
 
 <blockquote>
-<p>WrapItUp is a JQuery plugin designed to wrap each letter and or words ( the result of inner text and a regular expression on word boundary ) with divs or any other tag with specified attributes.</p>
+<p>WrapItUp is a Jquery plugin designed to wrap each letter ( the result of inner text ) and or word ( as captured by a regular expression via word boundary ) with divs or any other tag with specified attributes.</p>
 </blockquote>
 
 <h2>
 <a name="sample" class="anchor" href="#sample"><span class="octicon octicon-link"></span></a>Sample</h2>
 
-<p>Given some html like this..<br>
-&lt;div id='target'&gt;Lorem ipsum&lt;/div&gt;</p>
+<p>Given some html like this..<br></p>
 
-<p>doing this..<br></p>
+<p><code>&lt;div id='target'&gt;Lorem ipsum&lt;/div&gt;</code></p>
 
-<pre><code>$('#target').wrapItUp('foo', 'goo');
-</code></pre>
+<p>doing this JQuery...</p>
 
-<p>will produce this...<br>
-&lt;div id='target'&gt;&lt;div class='foo goo'&gt;L&lt;/div&gt;&lt;div class='foo goo'&gt;o&lt;/div&gt;&lt;div class='foo goo'&gt;r&lt;/div&gt;&lt;div class='foo goo'&gt;e&lt;/div&gt;&lt;div class='foo goo'&gt;m&lt;/div&gt;&lt;div class='foo goo'&gt; &lt;/div&gt;&lt;div class='foo goo'&gt;i&lt;/div&gt;&lt;div class='foo goo'&gt;p&lt;/div&gt;&lt;div class='foo goo'&gt;s&lt;/div&gt;&lt;div class='foo goo'&gt;u&lt;/div&gt;&lt;div class='foo goo'&gt;m&lt;/div&gt;&lt;/div&gt;</p>
+<p><code>$('#target').wrapItUp('foo', 'goo');</code></p>
+
+<p>will produce this...</p>
+
+<div class="highlight highlight-HTML"><pre>    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"target"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>L<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>o<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>r<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>e<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>m<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span> <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>i<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>p<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>s<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>u<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"foo goo"</span><span class="nt">&gt;</span>m<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+</pre></div>
 
 <h2>
-<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?!</h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why</h2>
 
-<blockquote>
-<p>You might be asking why would you want to do this?! I simply needed to keep my content SEO friendly and easy to change ( not cluttered with tags ) while using css3 animation on a String of text. Web crawlers like Google, don’t run JavaScript and rank pages based on a scan of consecutive text in HTML. Adhering to DRY, I decided to create a plugin and stop repeating myself. If you use modernizr (<a href="http://modernizr.com/">http://modernizr.com/</a>) to identify the capabilities of the client you can use it as part of the jQuery selector.  For example, you might want to know if the Browser supports CSS3, you can incorporate it in the selector after Modernizr runs. In this example the class cssanimations is added by modernizr to the body tag. We can take advantage by using it in the jQuery selector. </p>
-</blockquote>
+<p>You might be asking why would you want to do this?! I would suggest you look at this <a href="https://raw.github.com/psenger/WrapItUp/master/example.html">example</a> first to get an idea.</p>
 
-<p>This is what the HTML would look like before the wrapItUp.</p>
+<p>I simply needed to keep my content SEO friendly, capable of degrading gracefully, and easy to change the content( not cluttered with tags ). All of this while using css3 animation on a String of text or simple javascript animation.</p>
+
+<p>Web crawlers like Google, don’t run JavaScript and rank pages many things but one of the calculations is based on a scan of consecutive text in HTML. Adhering to DRY, I decided to create a plugin and stop repeating myself. If you use <a href="http://modernizr.com/">modernizr</a> to identify the capabilities of the client you can use it as part of the jQuery selector. For example, you might want to know if the Browser supports CSS3, you can incorporate it in the selector after <a href="http://modernizr.com/">modernizr</a> runs. In this example the class cssanimations is added by <a href="http://modernizr.com/">modernizr</a> to the body tag. We can take advantage by using it in the jQuery selector.</p>
+
+<p>I made this plugging to be compatible with javascript animation packages like extremely popular <a href="http://www.greensock.com/">GreenSock</a>. For example, If you wanted to make some text pop out, this is what the HTML would look like before using wrapItUp.</p>
 
 <p>&lt;body class=’cssanimations’ &gt;
 ....
@@ -78,7 +94,8 @@
 
 <p>Mixing in the modernizr introduced css class in the body and the tag selector, I call wrap it up like this.</p>
 
-<pre><code>$(‘.cssanimations #pop-out’).wrapItUp('pop');
+<pre><code>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.5/TweenMax.min.js"&gt;&lt;/script&gt;
+TweenLite.to( $(‘.cssanimations #pop-out’).wrapItUp('pop'), 2, {scale:1.5 } );
 </code></pre>
 
 <p>This is what it would look like after wrapItUp</p>
@@ -95,27 +112,34 @@ P&lt;/div&gt;
 <h2>
 <a name="parameters" class="anchor" href="#parameters"><span class="octicon octicon-link"></span></a>Parameters</h2>
 
-<p>wrapItUp()</p>
+<p>This is just an overview, for a better understand of the parameters, review the docs. </p>
+
+<p>wrapItUp() </p>
 
 <ul>
-<li>wraps each letter with a div</li>
-</ul><p>wrapItUp(String)</p>
+<li>wraps each letter with a div, this is kind of useless because there are no classes on the divs.</li>
+</ul><p>wrapItUp(String) </p>
 
 <ul>
-<li>wraps each letter with a div and each div has the class specified in the string</li>
+<li>wraps each letter with a div and each div will have the class specified in the string</li>
 </ul><p>wrapItUp(String... )</p>
 
 <ul>
 <li>wraps each letter with a div and each div has the classes specified in the var args strings</li>
-</ul><p>wrapItUp(Object)</p>
+</ul><p>wrapItUp( [ String... ] )</p>
 
 <ul>
-<li>wraps each what ever is specificed in the object.</li>
+<li>wraps each letter with a div and each div has the classes specified in the var args strings</li>
+</ul><p>wrapItUp(Object) - wraps each word or character in what ever is specified in the object.</p>
+
+<ul>
 <li>Object :
 
 <ul>
-<li>tag - String - the tag, default is div</li>
-<li>className - String[] - css classes</li>
+<li>characterTag - String - the tag, default is div</li>
+<li>wordTag - String - the tag, default is div</li>
+<li>characterClassNames - String[] - css classes used for the characters that will be wrapped in a div</li>
+<li>wordClassNames - String[] - css classes used for the words ( and character divs ) that will be wrapped in a div</li>
 <li>tagDecorator - function( i, v ) - the callback function that creates the attributes of the tag</li>
 <li>innerDecorator - function ( i, v ) - the callback function that decorators each character.</li>
 </ul>
@@ -125,14 +149,18 @@ P&lt;/div&gt;
 
 <p>destroy()
     - unwraps the content, restoring it back to its original state.</p>
-        </section>
+      </section>
+    </div>
 
-        <footer>
-          Wrapitup is maintained by <a href="https://github.com/psenger">psenger</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Wrapitup maintained by <a href="https://github.com/psenger">psenger</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
 
-                  <script type="text/javascript">
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -143,7 +171,6 @@ P&lt;/div&gt;
             } catch(err) {}
           </script>
 
-      </div>
-    </div>
+
   </body>
 </html>
