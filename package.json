@@ -1,9 +1,9 @@
 {
   "name": "WrapItUp",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A Jquery pluggin designed to wrap each letter ( the result of inner text ) with divs.",
   "main": "dist/WrapItUp.min.js",
-  "homepage": "https://github.com/psenger/WrapItUp/blob/master/README.md",
+  "homepage": "http://psenger.github.io/WrapItUp",
   "repository": {
     "type": "git",
     "url": "https://github.com/psenger/WrapItUp"

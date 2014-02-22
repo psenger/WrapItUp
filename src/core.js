@@ -7,7 +7,7 @@
 
 /**
  * @fileoverview wrapItUp is a jQuery pluggin designed to take the selected inner text of a jQuery Selection and for each character wrap it with a tag. By default space is converted to non-break space.
- * @copyright Philip A Senger 2013
+ * @copyright Philip A Senger 2014
  * @author Philip A Senger <philip dot a dot senger at cngrgroup dot com>
  * @license Apache
  * @module jQuery.fn.wrapItUp
@@ -15,9 +15,9 @@
  *<pre>
  * $('#target').wrapItUp('foo');
  * $('#target').wrapItUp('foo','goo');
- * $('#target').wrapItUp({className:['foo','goo']});
+ * $('#target').wrapItUp({characterClassNames:['goo'], wordClassNames:['foo']});
  * $('#target').wrapItUp({
- *                  className:['foo'],
+ *                  characterClassNames:['foo'],
  *                  innerDecorator: function ( i, v ) {
  *                                       if (v === " ") {
  *                                           return "&nbsp;";
@@ -47,12 +47,28 @@ wrapper.prototype = {
      */
     init: function () {
         this.oldHtml = this.$element.html();
-        var splitText = this.$element.text().split("");
-        var classNames = $.makeArray( this.params.className ).join(" ");
-        if (splitText.length > 0) {
+
+        var splitWords = this.$element.text().split(/\s/g);
+
+        var wordClassNames = $.makeArray( this.params.wordClassNames ).join(" ");
+        var characterClassNames = $.makeArray( this.params.characterClassNames ).join(" ");
+
+        if (splitWords.length > 0) {
             var concat = '';
-            for (var i = 0; i < splitText.length; i++) {
-                concat += "<" + this.params.tag + " class='" + classNames + "'" + this.params.tagDecorator( i, splitText[i] ) + ">" + this.params.innerDecorator(i, splitText[i] ) + "</" + this.params.tag + ">";
+            for (var j = 0; j < splitWords.length; j++) {
+                var splitCharacters = splitWords[j].split("");
+                var opentag = false;
+                if ( splitCharacters.length !== 0 && wordClassNames.length !== 0 ) {
+                    concat += "<" + this.params.wordTag + " class='" + wordClassNames + "'>";
+                    opentag = true;
+                }
+                for (var i = 0; i < splitCharacters.length; i++) {
+                    concat += "<" + this.params.characterTag + " class='" + characterClassNames + "'" + this.params.tagDecorator( i, splitCharacters[i] ) + ">" + this.params.innerDecorator(i, splitCharacters[i] ) + "</" + this.params.characterTag + ">";
+                }
+                if ( opentag ) {
+                    concat += "</" + this.params.wordTag + ">";
+                    opentag = false;
+                }
             }
             this.$element.html(concat);
         }
@@ -65,15 +81,19 @@ wrapper.prototype = {
         this.$element.removeData("wrapItUp");
     },
     /**
-     * @property {object}   defaults                - The default settings of this object.
-     * @property {string[]} defaults.className      - An array of strings that determines the css classes to attach to each tag.
-     * @property {string}   defaults.tag            - Tag type, defaulted to div.
-     * @property {function} defaults.tagDecorator   - Wrapping tag attribute decorator.
-     * @property {function} defaults.innerDecorator - Inner content decorator for each character.
+     * @property {object}   defaults                     - The default settings of this object.
+     * @property {string[]} defaults.characterClassNames - An array of strings that determines the css classes to attach to each tag.
+     * @property {string[]} defaults.wordClassNames      - An array of strings that determines the css classes to attach to each tag.
+     * @property {string}   defaults.characterTag        - Tag type used to wrap characters, defaulted to div.
+     * @property {string}   defaults.wordTag             - Tag type used to wrap words, defaulted to div.
+     * @property {function} defaults.tagDecorator        - Wrapping tag attribute decorator.
+     * @property {function} defaults.innerDecorator      - Inner content decorator for each character.
      */
     defaults : {
-        className: [],
-        tag: "div",
+        characterClassNames: [],
+        wordClassNames: [],
+        characterTag: "div",
+        wordTag: "div",
         /**
          * Decorator responsible for rendering tag attribute which will wrap each character.
          * @param {integer} i position within the array of characters.
@@ -108,15 +128,15 @@ $.fn.wrapItUp = function() {
     var options = {};
     if ( arguments.length === 1 ) {
         if ( typeof arguments[0] === 'string' ) {
-            options = { className: [ arguments[0] ] };
+            options = { characterClassNames: [ arguments[0] ] };
         } else if ( $.isArray( arguments[0] ) ) {
-            options = { className: arguments[0] };
+            options = { characterClassNames: arguments[0] };
         } else if ( typeof arguments[0] === 'object' ) {
             options = arguments[0];
         }
     } else if ( arguments.length > 1 ) {
         var args = Array.prototype.slice.call(arguments);
-        options = { className: args };
+        options = { characterClassNames: args };
     }
     return this.each(function () {
         if (!$(this).data("wrapItUp")) {
